@@ -13,6 +13,7 @@ function App() {
   const handleMarkTime = (time) => {
     setReadTime(readTime + time);
   };
+
   return (
     <>
       <Header></Header>
