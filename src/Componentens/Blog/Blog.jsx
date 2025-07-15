@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { BsBookmarkPlusFill } from 'react-icons/bs';
 
 
-const Blog = ({blog,handleAddToBookmark}) => {
+const Blog = ({blog,handleAddToBookmark,handleMarkTime}) => {
     // console.log(blog);
     const {title,cover_img,author_name,author_img,posted_date,reading_time,hashtags}=blog;
     // author_title,
@@ -22,18 +22,20 @@ const Blog = ({blog,handleAddToBookmark}) => {
                     </div>
                 </div>
                 <div className='flex items-center gap-2'>
-                    <span>{reading_time}</span>
-                    <button onClick={()=>handleAddToBookmark(blog)} className='cursor-pointer '> <BsBookmarkPlusFill></BsBookmarkPlusFill></button>
+                    <span>{reading_time} min read</span>
+                    <button className='cursor-pointer' onClick={()=>handleAddToBookmark(blog)} > <BsBookmarkPlusFill></BsBookmarkPlusFill></button>
                       
                 </div>
             </div>
             <h2 className='text-4xl font-bold py-5 text-[#111111]'> Title: {title}</h2>
             <p className='text-xl font-light cursor-pointer'>{hashtags}</p>
+            <button className='cursor-pointer underline mt-5 text-purple-700 font-bold' onClick={()=>handleMarkTime(reading_time)}>Mark As Read</button>
         </div>
     );
 };
 Blog.proptypes= {
     blog:PropTypes.object.isRequired,
-    handleAddToBookmark:PropTypes.func
+    handleAddToBookmark:PropTypes.func,
+    handleMarkTime:PropTypes.func
 }
 export default Blog;
